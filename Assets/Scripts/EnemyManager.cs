@@ -36,7 +36,11 @@ public class EnemyManager : MonoBehaviour
     #endregion
     
     private readonly Queue<Enemy> _enemies = new Queue<Enemy>();
+
+    [SerializeField] private Path path;
+    
     public Enemy[] Enemies => _enemies.ToArray();
+    public Path Path => path;
 
     private void Start()
     {
