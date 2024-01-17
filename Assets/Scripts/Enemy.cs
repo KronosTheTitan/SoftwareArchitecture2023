@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -8,15 +7,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool isWeaknessEffectActive;
     [SerializeField] private bool isDead;
     [SerializeField] private float position;
-    [SerializeField] private new MeshRenderer renderer;
+    [SerializeField] private Path path;
     public int CurrentHealth => currentHealth;
     public bool IsWeaknessEffectActive => isWeaknessEffectActive;
     public bool IsDead => isDead;
-
-    private void Start()
-    {
-        EventBus.CallOnEnemySpawn(this);
-    }
+    public float Position => position;
 
     private void Update()
     {
@@ -25,15 +20,15 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        Debug.Log("Took damage");
         if (isWeaknessEffectActive)
             amount *= 2;
         currentHealth -= amount;
-        if(currentHealth >= 0)
+        if(currentHealth > 0)
             return;
 
         EventBus.CallOnEnemyDestroyed(type);
-        isDead = true;
-        renderer.enabled = false;
+        Destroy(gameObject);
     }
 
     public void ApplyWeakness()
@@ -47,14 +42,25 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         position += type.Speed * Time.deltaTime;
-        Vector3 newPos = EnemyManager.GetInstance().Path.GetPointOnSpline(position);
+        Vector3 newPos = path.GetPointOnSpline(position);
         if (newPos == transform.position)
         {
-            gameObject.SetActive(false);
+            EventBus.CallOnEnemyReachedEnd();
+            Destroy(gameObject);
         }
         else
         {
             transform.position = newPos;
         }
+    }
+
+    public void Setup(EnemyType enemyType, Path newPath)
+    {
+        type = enemyType;
+        path = newPath;
+        transform.position = path.GetPointOnSpline(0);
+        currentHealth = type.Health;
+        GameObject gameObject = Instantiate(type.GFX, transform);
+        gameObject.transform.position = transform.position;
     }
 }

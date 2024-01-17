@@ -1,5 +1,6 @@
 using BuildTools;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Manages the placement and interaction of building tiles on the game map.
@@ -9,11 +10,13 @@ public class BuildingManager : MonoBehaviour
     /// <summary>
     /// The currently targeted hex tile.
     /// </summary>
-    public Tile targetedTile;
+    [FormerlySerializedAs("targetedTile")] public TowerTile targetedTowerTile;
 
     private BuildTool _selectedTool;
 
-    [SerializeField] private PlaceTowerDirect placeTowerDirect;
+    [SerializeField] private PlaceTower placeTowerDirect;
+    [SerializeField] private PlaceTower placeTowerAoe;
+    [SerializeField] private PlaceTower placeTowerWeakness;
 
     private void Update()
     {
@@ -31,10 +34,10 @@ public class BuildingManager : MonoBehaviour
         if (!Input.GetMouseButton(0)) // No mouse input
             return;
 
-        if (targetedTile == null) // No tile targeted by mouse
+        if (targetedTowerTile == null) // No tile targeted by mouse
             return;
 
-        if (_selectedTool.UseTool(targetedTile))
+        if (_selectedTool.UseTool(targetedTowerTile))
             DeselectToolSuccess();
     }
 
@@ -42,17 +45,17 @@ public class BuildingManager : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        targetedTile = null;
+        targetedTowerTile = null;
 
         if(!Physics.Raycast(ray, out hit))
             return;
 
-        Tile target = hit.collider.gameObject.GetComponent<Tile>();
+        TowerTile target = hit.collider.gameObject.GetComponent<TowerTile>();
 
         if (target == null)
             return;
 
-        targetedTile = target;
+        targetedTowerTile = target;
     }
 
     private void DeselectToolCancel()
@@ -61,27 +64,63 @@ public class BuildingManager : MonoBehaviour
             return;
 
         _selectedTool.OnDeselect();
-        _selectedTool.ToggleOff();
         _selectedTool = null;
     }
 
     private void DeselectToolSuccess()
     {
-        _selectedTool.Charge(targetedTile);
         _selectedTool.OnDeselect();
     }
 
     /// <summary>
     /// Selects a random tile from the potential tiles list and prepares to place it.
     /// </summary>
-    public void SelectPlaceTowerDirect(bool toolSelect)
+    public void SelectPlaceTowerDirect()
     {
-        if (!toolSelect)
+        Debug.Log("Selected Direct Attack Tower");
+        
+        if(!placeTowerDirect.CanSelect())
+            return;
+        
+        if (_selectedTool != null)
         {
             DeselectToolCancel();
             return;
         }
-
+        
         _selectedTool = placeTowerDirect;
+        _selectedTool.OnSelect();
+    }
+    public void SelectPlaceTowerAOE()
+    {
+        Debug.Log("Selected Direct Attack Tower");
+        
+        if(!placeTowerDirect.CanSelect())
+            return;
+        
+        if (_selectedTool != null)
+        {
+            DeselectToolCancel();
+            return;
+        }
+        
+        _selectedTool = placeTowerAoe;
+        _selectedTool.OnSelect();
+    }
+    public void SelectPlaceTowerWeakness()
+    {
+        Debug.Log("Selected Direct Attack Tower");
+        
+        if(!placeTowerDirect.CanSelect())
+            return;
+        
+        if (_selectedTool != null)
+        {
+            DeselectToolCancel();
+            return;
+        }
+        
+        _selectedTool = placeTowerWeakness;
+        _selectedTool.OnSelect();
     }
 }

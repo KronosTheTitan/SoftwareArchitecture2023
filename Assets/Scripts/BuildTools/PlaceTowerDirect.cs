@@ -1,33 +1,45 @@
 ﻿using System;
+using Towers;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace BuildTools
 {
     [Serializable]
-    public class PlaceTowerDirect : BuildTool
+    public class PlaceTower : BuildTool
     {
+        [SerializeField] private Tower prefab;
         public override bool CanSelect()
         {
-            throw new NotImplementedException();
+            if (GameManager.GetInstance().Money < Cost)
+                return false;
+
+            return true;
         }
 
-        public override bool UseTool(Tile target)
+        public override bool UseTool(TowerTile target)
         {
-            throw new NotImplementedException();
+            if (target.Tower != null)
+                return false;
+
+            Transform transform = target.transform;
+            target.SetTower(Object.Instantiate(prefab, transform.position, Quaternion.identity, transform));
+            return true;
         }
 
         public override void OnDeselect()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void OnSelect()
         {
-            throw new NotImplementedException();
+            
         }
 
-        public override void Charge(Tile tile)
+        public override void Charge(TowerTile towerTile)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
