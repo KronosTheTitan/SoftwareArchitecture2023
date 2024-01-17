@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
         if(currentHealth > 0)
             return;
 
-        EventBus.CallOnEnemyDestroyed(type);
+        EventBus<OnEnemyDestroyed>.Publish(new OnEnemyDestroyed(type));
         Destroy(gameObject);
     }
 
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
         Vector3 newPos = path.GetPointOnSpline(position);
         if (newPos == transform.position)
         {
-            EventBus.CallOnEnemyReachedEnd();
+            EventBus<OnEnemyReachedEnd>.Publish(new OnEnemyReachedEnd());
             Destroy(gameObject);
         }
         else

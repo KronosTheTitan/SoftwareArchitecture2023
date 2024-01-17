@@ -15,11 +15,12 @@ public class MainHud : MonoBehaviour
 
     private void Start()
     {
-        EventBus.OnPlayerTakeDamage += UpdatePlayerHealthBar;
-        EventBus.OnPlayerReceiveIncome += UpdateMoneyNumber;
-        EventBus.OnStartWave += UpdateWaveNumber;
-        EventBus.OnStartWave += DisableBuildTimeBar;
-        EventBus.OnEndWave += EnableBuildTimeBar;
+        EventBus<OnPlayerTakeDamage>.OnEvent += UpdatePlayerHealthBar;
+        EventBus<OnPlayerReceivedIncome>.OnEvent += UpdateMoneyNumber;
+        EventBus<OnStartWave>.OnEvent += DisableBuildTimeBar;
+        EventBus<OnStartWave>.OnEvent += UpdateWaveNumber;
+        
+        EventBus<OnEndWave>.OnEvent += EnableBuildTimeBar;
     }
 
     private void Update()
@@ -27,32 +28,41 @@ public class MainHud : MonoBehaviour
         buildTimeRemaining.value = (buildTimeRemaining.maxValue + buildPhaseStartTime) - Time.time;
     }
 
-    private void UpdatePlayerHealthBar(int newHealth, int damageTaken)
+    private void UpdatePlayerHealthBar(OnPlayerTakeDamage onPlayerTakeDamage)
     {
-        playerHealthBar.value = newHealth;
+        playerHealthBar.value = onPlayerTakeDamage.NewHealth;
     }
 
-    private void UpdateMoneyNumber(int newMoney)
+    private void UpdateMoneyNumber(OnPlayerReceivedIncome onPlayerReceivedIncome)
     {
-        moneyNumberText.text = newMoney.ToString();
+        moneyNumberText.text = onPlayerReceivedIncome.NewMoney.ToString();
     }
 
     private void UpdateWaveNumber(Wave wave, int waveNumber)
     {
         waveNumberText.text = (waveNumber + 1).ToString();
     }
+    
+    private void UpdateWaveNumber(OnStartWave onStartWave)
+    {
+        waveNumberText.text = (onStartWave.WaveNumber + 1).ToString();
+    }
 
-    private void EnableBuildTimeBar(float buildTimeLength)
+    private void EnableBuildTimeBar(OnEndWave onEndWave)
     {
         buildTimeRemaining.gameObject.SetActive(true);
 
         buildPhaseStartTime = Time.time;
         
         buildTimeRemaining.minValue = 0;
-        buildTimeRemaining.maxValue = buildTimeLength;
-        buildTimeRemaining.value = (buildTimeLength + buildPhaseStartTime) - Time.time;
+        buildTimeRemaining.maxValue = onEndWave.BuildTimeLength;
+        buildTimeRemaining.value = (onEndWave.BuildTimeLength + buildPhaseStartTime) - Time.time;
     }
 
+    private void DisableBuildTimeBar(OnStartWave onStartWave)
+    {
+        DisableBuildTimeBar(onStartWave.Wave, onStartWave.WaveNumber);
+    }
     private void DisableBuildTimeBar(Wave wave, int waveNumber)
     {
         buildTimeRemaining.gameObject.SetActive(false);

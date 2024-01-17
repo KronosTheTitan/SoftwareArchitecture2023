@@ -22,8 +22,8 @@ public class WaveManager : MonoBehaviour
     
     private void Start()
     {
-        EventBus.OnEnemyDestroyed += RemoveEnemy;
-        EventBus.OnEnemyReachedEnd += RemoveEnemy;
+        EventBus<OnEnemyDestroyed>.OnEvent += RemoveEnemy;
+        EventBus<OnEnemyReachedEnd>.OnEvent += RemoveEnemy;
     }
 
     private void Update()
@@ -55,7 +55,7 @@ public class WaveManager : MonoBehaviour
         if(activeEnemies != 0)
             return;
         
-        EventBus.CallOnEndWave(buildPhaseLength);
+        EventBus<OnEndWave>.Publish(new OnEndWave(buildPhaseLength));
         currentPhase = phase.building;
         buildPhaseStartTime = Time.time;
     }
@@ -67,8 +67,8 @@ public class WaveManager : MonoBehaviour
         activeWave = waves[waveNumber];
         
         activeEnemies = NumberOfEnemiesInWave(activeWave);
-        
-        EventBus.CallOnStartWave(activeWave, waveNumber);
+        EventBus<OnStartWave>.Publish(new OnStartWave(activeWave, waveNumber));
+       //EventBus.CallOnStartWave(activeWave, waveNumber);
     }
 
     /// <summary>
@@ -87,21 +87,13 @@ public class WaveManager : MonoBehaviour
 
         return i;
     }
-
-    /// <summary>
-    /// these functions is used to keep track of when enemies are destroyed to ensure that waves don't end prematurely.
-    /// </summary>
-    /// <param name="type">This parameter does not matter, this is just info it takes in from the OnEnemyDestroyed
-    /// event, other functions rely on that information to take their actions.</param>
-    private void RemoveEnemy(EnemyType type)
+    
+    private void RemoveEnemy(OnEnemyDestroyed onEnemyDestroyed)
     {
         activeEnemies--;
     }
-
-    /// <summary>
-    /// Used in detecting when a wave has been finished.
-    /// </summary>
-    private void RemoveEnemy()
+    
+    private void RemoveEnemy(OnEnemyReachedEnd onEnemyReachedEnd)
     {
         activeEnemies--;
     }

@@ -1,57 +1,71 @@
-﻿public class EventBus
+﻿using System;
+
+public abstract class Event{
+    
+}
+
+public class OnStartWave : Event
 {
-    public static event PlayerTakeDamage OnPlayerTakeDamage;
-    public delegate void PlayerTakeDamage(int newHealth, int damageTaken);
+    public readonly Wave Wave;
+    public readonly int WaveNumber;
+    public OnStartWave(Wave pWave, int pWaveNumber)
+    {
+        Wave = pWave;
+        WaveNumber = pWaveNumber;
+    }
+}
+
+public class OnPlayerTakeDamage : Event
+{
+    public readonly int NewHealth;
+    public readonly int DamageTaken;
+    public OnPlayerTakeDamage(int pNewHealth, int pDamageTaken)
+    {
+        NewHealth = pNewHealth;
+        DamageTaken = pDamageTaken;
+    }
+}
+
+public class OnPlayerReceivedIncome : Event
+{
+    public readonly int NewMoney;
+
+    public OnPlayerReceivedIncome(int pNewMoney)
+    {
+        NewMoney = pNewMoney;
+    }
+}
+
+public class OnEnemyReachedEnd : Event
+{
     
-    public static event PlayerReceiveIncome OnPlayerReceiveIncome;
-    public delegate void PlayerReceiveIncome(int newMoney);
+}
 
-    public static event EnemyDestroyed OnEnemyDestroyed;
-    public delegate void EnemyDestroyed(EnemyType enemyType);
-    public static event EnemyReachedEnd OnEnemyReachedEnd;
-    public delegate void EnemyReachedEnd();
-
-    public static event StartWave OnStartWave;
-    public delegate void StartWave(Wave wave, int waveNumber);
-
-    public static event EndWave OnEndWave;
-
-    public delegate void EndWave(float buildTimeLength);
-
-    public static event EnemySpawn OnEnemySpawn;
-    public delegate void EnemySpawn(Enemy enemy);
-
-    public static void CallOnPlayerTakeDamage(int newHealth, int damageTaken)
+public class OnEnemyDestroyed : Event
+{
+    public readonly EnemyType EnemyType;
+    public OnEnemyDestroyed(EnemyType pEnemyType)
     {
-        OnPlayerTakeDamage?.Invoke(newHealth, damageTaken);
+        EnemyType = pEnemyType;
     }
-    public static void CallOnPlayerReceiveIncome(int newMoney)
-    {
-        OnPlayerReceiveIncome?.Invoke(newMoney);
-    }
+}
 
-    public static void CallOnEnemyDestroyed(EnemyType enemyType)
-    {
-        OnEnemyDestroyed?.Invoke(enemyType);
-    }
+public class OnEndWave : Event
+{
+    public readonly float BuildTimeLength;
 
-    public static void CallOnEnemyReachedEnd()
+    public OnEndWave(float pBuildTimeLength)
     {
-        OnEnemyReachedEnd?.Invoke();
+        BuildTimeLength = pBuildTimeLength;
     }
+}
 
-    public static void CallOnStartWave(Wave wave, int waveNumber)
-    {
-        OnStartWave?.Invoke(wave, waveNumber);
-    }
-    
-    public static void CallOnEndWave(float durationOfBuildPhase)
-    {
-        OnEndWave?.Invoke(durationOfBuildPhase);
-    }
+public class EventBus<T> where T : Event
+{
+    public static event Action<T> OnEvent;
 
-    public static void CallOnEnemySpawn(Enemy enemy)
+    public static void Publish(T pEvent)
     {
-        OnEnemySpawn?.Invoke(enemy);
+        OnEvent?.Invoke(pEvent);
     }
 }

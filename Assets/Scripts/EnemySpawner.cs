@@ -16,7 +16,16 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        EventBus.OnStartWave += StartWave;
+        //EventBus.OnStartWave += StartWave;
+        EventBus<OnStartWave>.OnEvent += StartWave;
+    }
+
+    /// <summary>
+    /// unsubscribe, very important
+    /// </summary>
+    private void OnDisable()
+    {
+        EventBus<OnStartWave>.OnEvent -= StartWave;
     }
 
     private void Update()
@@ -43,6 +52,10 @@ public class EnemySpawner : MonoBehaviour
         currentEnemy++;
     }
 
+    private void StartWave(OnStartWave onStartWave)
+    {
+        StartWave(onStartWave.Wave, onStartWave.WaveNumber);
+    }
     private void StartWave(Wave wave, int waveNumber)
     {
         remainingEnemies.Clear();

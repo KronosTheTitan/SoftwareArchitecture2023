@@ -43,17 +43,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        EventBus.OnEnemyDestroyed += ReceiveIncome;
-        EventBus.OnEnemyReachedEnd += TakeDamage;
+        EventBus<OnEnemyDestroyed>.OnEvent += ReceiveIncome;
+        EventBus<OnEnemyReachedEnd>.OnEvent += TakeDamage;
     }
 
-    private void ReceiveIncome(EnemyType type)
+    private void ReceiveIncome(OnEnemyDestroyed onEnemyDestroyed)
     {
-        money += type.CarriedMoney;
-        EventBus.CallOnPlayerReceiveIncome(money);
+        money += onEnemyDestroyed.EnemyType.CarriedMoney;
+        EventBus<OnPlayerReceivedIncome>.Publish(new OnPlayerReceivedIncome(money));
     }
 
-    private void TakeDamage()
+    private void TakeDamage(OnEnemyReachedEnd onEnemyReachedEnd)
     {
         int amount = 1;
         healthRemaining -= amount;
@@ -61,6 +61,6 @@ public class GameManager : MonoBehaviour
         if(healthRemaining <= 0)
             Debug.LogError("Player Defeated");
         
-        EventBus.CallOnPlayerTakeDamage(healthRemaining ,amount);
+        EventBus<OnPlayerTakeDamage>.Publish(new OnPlayerTakeDamage(healthRemaining, amount));
     }
 }
