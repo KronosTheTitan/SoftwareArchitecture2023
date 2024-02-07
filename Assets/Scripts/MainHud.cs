@@ -22,6 +22,19 @@ public class MainHud : MonoBehaviour
         
         EventBus<OnEndWave>.OnEvent += EnableBuildTimeBar;
     }
+    
+    /// <summary>
+    /// unsubscribe, very important
+    /// </summary>
+    private void OnDisable()
+    {
+        EventBus<OnPlayerTakeDamage>.OnEvent -= UpdatePlayerHealthBar;
+        EventBus<OnPlayerReceivedIncome>.OnEvent -= UpdateMoneyNumber;
+        EventBus<OnStartWave>.OnEvent -= DisableBuildTimeBar;
+        EventBus<OnStartWave>.OnEvent -= UpdateWaveNumber;
+        
+        EventBus<OnEndWave>.OnEvent -= EnableBuildTimeBar;
+    }
 
     private void Update()
     {
