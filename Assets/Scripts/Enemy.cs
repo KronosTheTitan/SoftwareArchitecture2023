@@ -1,4 +1,6 @@
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool isDead;
     [SerializeField] private float position;
     [SerializeField] private Path path;
+    [SerializeField] private MoneyFromEnemy moneyDropText;
+    [SerializeField] private Slider healthBar;
     public int CurrentHealth => currentHealth;
     public bool IsWeaknessEffectActive => isWeaknessEffectActive;
     public bool IsDead => isDead;
@@ -16,23 +20,32 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Move();
+        DetectDeath();
     }
 
-    public void TakeDamage(int amount)
+    private void DetectDeath()
     {
-        Debug.Log("Took damage");
-        if (isWeaknessEffectActive)
-            amount *= 2;
-        currentHealth -= amount;
         if(currentHealth > 0)
             return;
 
         EventBus<OnEnemyDestroyed>.Publish(new OnEnemyDestroyed(type));
+        Instantiate(moneyDropText, transform.position, quaternion.identity).Setup(type.CarriedMoney);
         Destroy(gameObject);
     }
 
+    public void TakeDamage(int amount)
+    {
+        if (isWeaknessEffectActive)
+            amount *= 2;
+        currentHealth -= amount;
+
+        healthBar.value = currentHealth;
+    }
+    
     public void ApplyWeakness()
     {
+        Debug.Log("Weakness Applied");
+        
         if(isWeaknessEffectActive)
             return;
 
@@ -62,5 +75,7 @@ public class Enemy : MonoBehaviour
         currentHealth = type.Health;
         GameObject gameObject = Instantiate(type.GFX, transform);
         gameObject.transform.position = transform.position;
+        healthBar.maxValue = type.Health;
+        healthBar.value = type.Health;
     }
 }

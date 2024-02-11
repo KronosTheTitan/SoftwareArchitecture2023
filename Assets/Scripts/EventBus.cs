@@ -60,6 +60,26 @@ public class OnEndWave : Event
     }
 }
 
+public class OnGameEnd : Event
+{
+    public readonly bool isVictory;
+
+    public OnGameEnd(bool pIsVictory)
+    {
+        isVictory = pIsVictory;
+    }
+}
+
+public class OnGameStart : Event
+{
+    public readonly float buildPhaseLength;
+
+    public OnGameStart(float pBuildPhaseLength)
+    {
+        buildPhaseLength = pBuildPhaseLength;
+    }
+}
+
 public class EventBus<T> where T : Event
 {
     public static event Action<T> OnEvent;

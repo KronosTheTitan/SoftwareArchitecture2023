@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainHud : MonoBehaviour
@@ -13,7 +14,11 @@ public class MainHud : MonoBehaviour
 
     [SerializeField] private float buildPhaseStartTime;
 
-    private void Start()
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject victoryScreen;
+    [SerializeField] private GameObject hud;
+    
+    private void Awake()
     {
         EventBus<OnPlayerTakeDamage>.OnEvent += UpdatePlayerHealthBar;
         EventBus<OnPlayerReceivedIncome>.OnEvent += UpdateMoneyNumber;
@@ -21,6 +26,8 @@ public class MainHud : MonoBehaviour
         EventBus<OnStartWave>.OnEvent += UpdateWaveNumber;
         
         EventBus<OnEndWave>.OnEvent += EnableBuildTimeBar;
+        EventBus<OnGameEnd>.OnEvent += GameOver;
+        EventBus<OnGameStart>.OnEvent += EnableBuildTimeBar;
     }
     
     /// <summary>
@@ -34,6 +41,8 @@ public class MainHud : MonoBehaviour
         EventBus<OnStartWave>.OnEvent -= UpdateWaveNumber;
         
         EventBus<OnEndWave>.OnEvent -= EnableBuildTimeBar;
+        EventBus<OnGameEnd>.OnEvent -= GameOver;
+        EventBus<OnGameStart>.OnEvent -= EnableBuildTimeBar;
     }
 
     private void Update()
@@ -61,6 +70,11 @@ public class MainHud : MonoBehaviour
         waveNumberText.text = (onStartWave.WaveNumber + 1).ToString();
     }
 
+    private void EnableBuildTimeBar(OnGameStart onGameStart)
+    {
+        EnableBuildTimeBar(new OnEndWave(onGameStart.buildPhaseLength));
+    }
+    
     private void EnableBuildTimeBar(OnEndWave onEndWave)
     {
         buildTimeRemaining.gameObject.SetActive(true);
@@ -79,5 +93,24 @@ public class MainHud : MonoBehaviour
     private void DisableBuildTimeBar(Wave wave, int waveNumber)
     {
         buildTimeRemaining.gameObject.SetActive(false);
+    }
+
+    private void GameOver(OnGameEnd onGameEnd)
+    {
+        if (onGameEnd.isVictory)
+        {
+            hud.SetActive(false);
+            victoryScreen.SetActive(true);
+        }
+        else
+        { 
+            hud.SetActive(false);
+            gameOverScreen.SetActive(true);
+        }
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene("Scenes/MainMenu");
     }
 }

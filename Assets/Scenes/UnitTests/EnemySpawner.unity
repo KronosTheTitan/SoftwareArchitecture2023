@@ -343,6 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1848406172}
   - component: {fileID: 1848406173}
+  - component: {fileID: 1848406174}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -383,6 +384,26 @@ MonoBehaviour:
   currentEnemy: 0
   remainingEnemies: []
   enemyTemplate: {fileID: 1377238105812271277, guid: e42d0a614a605c24fb5ae12f17c344c0, type: 3}
+--- !u!114 &1848406174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848406171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b611f1355ae138942ae9d538b419f114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 11400000, guid: f4793a9383e537e478c8e7cf7fefe1b7, type: 2}
+  activeWave: {fileID: 0}
+  waveNumber: -1
+  activeEnemies: 0
+  buildPhaseStartTime: 0
+  buildPhaseLength: 0
+  currentPhase: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

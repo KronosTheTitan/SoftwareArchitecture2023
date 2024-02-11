@@ -14,9 +14,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<EnemyType> remainingEnemies;
     [SerializeField] private Enemy enemyTemplate;
 
-    private void Start()
+    private void Awake()
     {
-        //EventBus.OnStartWave += StartWave;
         EventBus<OnStartWave>.OnEvent += StartWave;
     }
 

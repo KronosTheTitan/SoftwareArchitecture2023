@@ -1,28 +1,54 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Towers
 {
-    public abstract class Tower : MonoBehaviour
+    public class Tower : MonoBehaviour
     {
-        [SerializeField] protected float rateOfFire = 1;
-        [SerializeField] protected float range;
-        [SerializeField] protected LayerMask layerMask;
+        [SerializeField] private TowerType towerType;
+        [SerializeField] private GameObject GFX;
+        [SerializeField] private TowerVFX vfx;
         private float _lastAttack = 0;
+
+        public TowerVFX VFX => vfx;
         private void Update()
         {
-            if(_lastAttack+rateOfFire > Time.time) return;
-            if(Attack())
+            if(_lastAttack+towerType.RateOfFire > Time.time) return;
+            if(towerType.Attack(this))
                 _lastAttack = Time.time;
                 
         }
 
-        protected abstract bool Attack();
+        public bool CanUpgrade()
+        {
+            return (towerType.Upgrade != null);
+        }
+
+        public TowerType TowerType => towerType;
+
+        public void SetTowerType(TowerType pTowerType)
+        {
+            towerType = pTowerType;
+
+            if (GFX != null)
+            {
+                Destroy(GFX);
+            }
+
+            vfx = Instantiate(towerType.VFX, transform.position, quaternion.identity, transform);
+            GFX = Instantiate(towerType.GFX, transform.position, quaternion.identity, transform);
+        }
+
+        private void OnDestroy()
+        {
+            Destroy(GFX);
+        }
 
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, range);
+            Gizmos.DrawWireSphere(transform.position, towerType.Range);
         }
     }
 }

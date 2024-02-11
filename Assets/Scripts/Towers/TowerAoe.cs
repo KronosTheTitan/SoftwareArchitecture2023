@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace Towers
 {
-    public class TowerAoe : Tower
+    [CreateAssetMenu(fileName = "TowerAOE", menuName = "SoftwareArchitecture/Towers/TowerAOE")]
+    public class TowerAoe : TowerType
     {
         [SerializeField] private int damage;
-        protected override bool Attack()
+        public override bool Attack(Tower caller)
         {
-            Collider[] hits = Physics.OverlapSphere(transform.position, range, layerMask);
+            Collider[] hits = Physics.OverlapSphere(caller.transform.position, range, layerMask);
             
             if (hits.Length == 0)
                 return false;
@@ -24,6 +25,10 @@ namespace Towers
                 
                 enemy.TakeDamage(damage);
             }
+            
+            
+            
+            caller.VFX.Play(caller,null);
 
             return true;
         }

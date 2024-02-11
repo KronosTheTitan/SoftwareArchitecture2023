@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="BuildingManager">
+    <Position X="29.75" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAADAgAAAAAAAAAAAAgAAAADAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\BuildingManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildTools.BuildTool">
+    <Position X="10" Y="15.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAADAAAABQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\BuildTools\BuildTool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.ScriptableObject">
+    <Position X="13.75" Y="12.75" Width="3.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour" Collapsed="true">
+    <Position X="27.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="EnemyType">
+    <Position X="4" Y="15.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAACAACAAAAggAAAAACAAABAAAAAQAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\EnemyType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wave">
+    <Position X="16.5" Y="15.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAABAAAAAQQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Wave.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Towers.TowerType">
+    <Position X="22.25" Y="15.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAIAAAAiAAAAAAiCAAAIIAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Towers\TowerType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Towers.TowerAoe">
+    <Position X="19.75" Y="19.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Towers\TowerAoe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Towers.TowerDirect">
+    <Position X="22.5" Y="19.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Towers\TowerDirect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Towers.TowerWeakness">
+    <Position X="25.25" Y="19.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Towers\TowerWeakness.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildTools.Bulldoze">
+    <Position X="13.25" Y="18.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\BuildTools\Bulldoze.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildTools.PlaceTower">
+    <Position X="6.75" Y="18.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACIAIABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\BuildTools\PlaceTower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildTools.Upgrade">
+    <Position X="10" Y="18.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\BuildTools\Upgrade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaveManager">
+    <Position X="5.25" Y="2.25" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="WaveManager.phase">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\WaveManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAiAAAAAAgQBAAgAAAAAAAgAIAAhBABAAEEQ=</HashCode>
+      <FileName>Assets\Scripts\WaveManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy">
+    <Position X="10.5" Y="2.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACIAAAAAgwAACMIQAABAFAAAAAAEAgAAQABA=</HashCode>
+      <FileName>Assets\Scripts\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemySpawner">
+    <Position X="14.75" Y="2.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAABAIAAAACAAAAgAAAAAAIECAAEBAAEEA=</HashCode>
+      <FileName>Assets\Scripts\EnemySpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager">
+    <Position X="18.75" Y="2.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAUAAACACAAAAAAAAIACAAABAAAAAAIEAAAgAAAEEA=</HashCode>
+      <FileName>Assets\Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainHud">
+    <Position X="23.75" Y="2.25" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAgRgEAAACAAABgAIAAAAAAAAAAAAIQAACAAAIQWA=</HashCode>
+      <FileName>Assets\Scripts\MainHud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenu">
+    <Position X="32.75" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAgAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Path">
+    <Position X="35.5" Y="2.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AQAEAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Path.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimeControl">
+    <Position X="39.25" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\TimeControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TowerTile">
+    <Position X="42.25" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAQAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\TowerTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoneyFromEnemy">
+    <Position X="45.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACCAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\MoneyFromEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Towers.Tower">
+    <Position X="48.25" Y="2.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAIAAAABAAACAAAAIAAAACAAAAAIgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Towers\Tower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Event">
+    <Position X="25.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnStartWave">
+    <Position X="18.25" Y="10.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnPlayerTakeDamage">
+    <Position X="26.25" Y="10.25" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnPlayerReceivedIncome">
+    <Position X="34.5" Y="10.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnEnemyReachedEnd">
+    <Position X="12.25" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnEnemyDestroyed">
+    <Position X="22.25" Y="10.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnEndWave">
+    <Position X="31" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnGameEnd">
+    <Position X="38.25" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnGameStart">
+    <Position X="14.75" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EventBus&lt;T&gt;" Collapsed="true">
+    <Position X="52.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

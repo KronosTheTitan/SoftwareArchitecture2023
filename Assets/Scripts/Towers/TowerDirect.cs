@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace Towers
 {
-    public class TowerDirect : Tower
+    [CreateAssetMenu(fileName = "TowerDirect", menuName = "SoftwareArchitecture/Towers/TowerDirect")]
+    public class TowerDirect : TowerType
     {
         [SerializeField] private int damage;
-        protected override bool Attack()
+        public override bool Attack(Tower caller)
         {
-            Collider[] hits = Physics.OverlapSphere(transform.position, range, layerMask);
+            Collider[] hits = Physics.OverlapSphere(caller.transform.position, range, layerMask);
             List<Enemy> enemies = new List<Enemy>();
             
             foreach (Collider hit in hits)
@@ -42,6 +43,8 @@ namespace Towers
                 return false;
             
             furthest.TakeDamage(damage);
+            
+            caller.VFX.Play(caller,furthest);
 
             return true;
         }

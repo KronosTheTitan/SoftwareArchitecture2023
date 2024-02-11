@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace Towers
 {
-    public class TowerWeakness : Tower
+    [CreateAssetMenu(fileName = "TowerWeakness", menuName = "SoftwareArchitecture/Towers/TowerWeakness")]
+    public class TowerWeakness : TowerType
     {
-        protected override bool Attack()
+        public override bool Attack(Tower caller)
         {
-            Collider[] hits = Physics.OverlapSphere(transform.position, range, 3);
+            Collider[] hits = Physics.OverlapSphere(caller.transform.position, range, layerMask);
             List<Enemy> enemies = new List<Enemy>();
 
             foreach (Collider hit in hits)
@@ -41,6 +42,9 @@ namespace Towers
                 return false;
             
             furthest.ApplyWeakness();
+            
+            caller.VFX.Play(caller,furthest);
+            
             return true;
         }
     }

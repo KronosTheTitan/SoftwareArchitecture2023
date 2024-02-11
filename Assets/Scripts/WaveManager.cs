@@ -15,12 +15,25 @@ public class WaveManager : MonoBehaviour
     private enum phase
     {
         combat,
-        building
+        building,
+        end
     }
 
     [SerializeField] private phase currentPhase = phase.building;
     
+    private void Awake()
+    {
+        EventBus<OnEnemyDestroyed>.OnEvent += RemoveEnemy;
+        EventBus<OnEnemyReachedEnd>.OnEvent += RemoveEnemy;
+    }
+
     private void Start()
+    {
+        buildPhaseStartTime = Time.time;
+        EventBus<OnGameStart>.Publish(new OnGameStart(buildPhaseLength));
+    }
+
+    private void OnDisable()
     {
         EventBus<OnEnemyDestroyed>.OnEvent += RemoveEnemy;
         EventBus<OnEnemyReachedEnd>.OnEvent += RemoveEnemy;
@@ -54,6 +67,11 @@ public class WaveManager : MonoBehaviour
     {
         if(activeEnemies != 0)
             return;
+
+        if (waveNumber >= waves.Length - 1)
+        {
+            EventBus<OnGameEnd>.Publish(new OnGameEnd(true));
+        }
         
         EventBus<OnEndWave>.Publish(new OnEndWave(buildPhaseLength));
         currentPhase = phase.building;

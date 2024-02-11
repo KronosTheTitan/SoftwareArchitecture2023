@@ -14,9 +14,7 @@ public class BuildingManager : MonoBehaviour
 
     private BuildTool _selectedTool;
 
-    [SerializeField] private PlaceTower placeTowerDirect;
-    [SerializeField] private PlaceTower placeTowerAoe;
-    [SerializeField] private PlaceTower placeTowerWeakness;
+    [SerializeField] private BuildTool[] tools;
 
     private void Update()
     {
@@ -63,64 +61,32 @@ public class BuildingManager : MonoBehaviour
         if (_selectedTool == null)
             return;
 
-        _selectedTool.OnDeselect();
         _selectedTool = null;
     }
 
     private void DeselectToolSuccess()
     {
-        _selectedTool.OnDeselect();
+        if (_selectedTool == null)
+            return;
+        
+        GameManager.GetInstance().SpendMoney(_selectedTool.Cost);
+        
+        _selectedTool = null;
     }
 
     /// <summary>
     /// Selects a random tile from the potential tiles list and prepares to place it.
     /// </summary>
-    public void SelectPlaceTowerDirect()
+    public void SelectTool(int tool)
     {
-        Debug.Log("Selected Direct Attack Tower");
-        
-        if(!placeTowerDirect.CanSelect())
+        if(!tools[tool].CanSelect())
             return;
         
         if (_selectedTool != null)
         {
             DeselectToolCancel();
-            return;
         }
         
-        _selectedTool = placeTowerDirect;
-        _selectedTool.OnSelect();
-    }
-    public void SelectPlaceTowerAOE()
-    {
-        Debug.Log("Selected Direct Attack Tower");
-        
-        if(!placeTowerDirect.CanSelect())
-            return;
-        
-        if (_selectedTool != null)
-        {
-            DeselectToolCancel();
-            return;
-        }
-        
-        _selectedTool = placeTowerAoe;
-        _selectedTool.OnSelect();
-    }
-    public void SelectPlaceTowerWeakness()
-    {
-        Debug.Log("Selected Direct Attack Tower");
-        
-        if(!placeTowerDirect.CanSelect())
-            return;
-        
-        if (_selectedTool != null)
-        {
-            DeselectToolCancel();
-            return;
-        }
-        
-        _selectedTool = placeTowerWeakness;
-        _selectedTool.OnSelect();
+        _selectedTool = tools[tool];
     }
 }
