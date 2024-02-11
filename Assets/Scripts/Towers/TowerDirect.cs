@@ -1,8 +1,12 @@
 using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
 
 namespace Towers
 {
+    /// <summary>
+    /// this tower deals damage to a single enemy at longer distances.
+    /// </summary>
     [CreateAssetMenu(fileName = "TowerDirect", menuName = "SoftwareArchitecture/Towers/TowerDirect")]
     public class TowerDirect : TowerType
     {

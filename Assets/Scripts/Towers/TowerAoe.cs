@@ -1,8 +1,12 @@
 using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
 
 namespace Towers
 {
+    /// <summary>
+    /// this tower attacks enemies in a radius around itself.
+    /// </summary>
     [CreateAssetMenu(fileName = "TowerAOE", menuName = "SoftwareArchitecture/Towers/TowerAOE")]
     public class TowerAoe : TowerType
     {

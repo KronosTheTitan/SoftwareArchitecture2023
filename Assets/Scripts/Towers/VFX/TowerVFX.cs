@@ -1,9 +1,15 @@
-using Towers;
+using Enemies;
 using UnityEngine;
 
-public abstract class TowerVFX : MonoBehaviour
+namespace Towers.VFX
 {
-    [SerializeField] protected new ParticleSystem particleSystem;
+    /// <summary>
+    /// Handles the various vfx effects of a tower.
+    /// </summary>
+    public abstract class TowerVFX : MonoBehaviour
+    {
+        [SerializeField] protected new ParticleSystem particleSystem;
     
-    public abstract void Play(Tower source, Enemy target);
+        public abstract void Play(Tower source, Enemy target);
+    }
 }

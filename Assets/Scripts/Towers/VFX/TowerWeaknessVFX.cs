@@ -1,10 +1,16 @@
-using Towers;
+using Enemies;
 
-public class TowerWeaknessVFX : TowerVFX
+namespace Towers.VFX
 {
-    public override void Play(Tower source, Enemy target)
+    /// <summary>
+    /// see TowerVFX.cs for info, this is just an implementation.
+    /// </summary>
+    public class TowerWeaknessVFX : TowerVFX
     {
-        transform.LookAt(target.transform);
-        particleSystem.Play();
+        public override void Play(Tower source, Enemy target)
+        {
+            transform.LookAt(target.transform);
+            particleSystem.Play();
+        }
     }
 }

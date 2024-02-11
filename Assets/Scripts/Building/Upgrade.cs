@@ -1,7 +1,11 @@
+using Managers;
 using UnityEngine;
 
-namespace BuildTools
+namespace Building
 {
+    /// <summary>
+    /// upgrades an existing tower to a higher level if possible, this level is determined by the towertype scriptable object.
+    /// </summary>
     [CreateAssetMenu(fileName = "Upgrade", menuName = "SoftwareArchitecture/Tools/Upgrade")]
     public class Upgrade : BuildTool
     {

@@ -1,9 +1,10 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-namespace BuildTools
+namespace Building
 {
+    /// <summary>
+    /// the abstract class that contains the generalized functionality and data of a build tool.
+    /// </summary>
     public abstract class BuildTool : ScriptableObject
     {
         [SerializeField] private int cost;

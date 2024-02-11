@@ -1,9 +1,15 @@
-using Towers;
+using Enemies;
 
-public class TowerAOE : TowerVFX
+namespace Towers.VFX
 {
-    public override void Play(Tower source, Enemy target)
+    /// <summary>
+    /// see TowerVFX.cs for info, this is just an implementation.
+    /// </summary>
+    public class TowerAOE : TowerVFX
     {
-        particleSystem.Play();
+        public override void Play(Tower source, Enemy target)
+        {
+            particleSystem.Play();
+        }
     }
 }

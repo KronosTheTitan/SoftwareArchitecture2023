@@ -1,8 +1,12 @@
 using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
 
 namespace Towers
 {
+    /// <summary>
+    /// applies a weakness effect to an enemy which doubles the amount of damage they take.
+    /// </summary>
     [CreateAssetMenu(fileName = "TowerWeakness", menuName = "SoftwareArchitecture/Towers/TowerWeakness")]
     public class TowerWeakness : TowerType
     {

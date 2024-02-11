@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Managers;
 using Towers;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-namespace BuildTools
+namespace Building
 {
+    /// <summary>
+    /// used in the placing of towers.
+    /// </summary>
     [CreateAssetMenu(fileName = "new PlaceTower", menuName = "SoftwareArchitecture/Tools/PlaceTower")]
     public class PlaceTower : BuildTool
     {

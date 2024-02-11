@@ -1,9 +1,13 @@
 using System;
+using Towers.VFX;
 using Unity.Mathematics;
 using UnityEngine;
 
 namespace Towers
 {
+    /// <summary>
+    /// this is an instance of a tower, its behaviour is determined by its type, which is added in as a strategy pattern.
+    /// </summary>
     public class Tower : MonoBehaviour
     {
         [SerializeField] private TowerType towerType;

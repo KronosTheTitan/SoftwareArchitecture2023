@@ -1,7 +1,11 @@
+using Towers.VFX;
 using UnityEngine;
 
 namespace Towers
 {
+    /// <summary>
+    /// the abstract of a tower type, its just a list of functions and variables that every tower type needs.
+    /// </summary>
     public abstract class TowerType : ScriptableObject
     {
         [SerializeField] protected LayerMask layerMask;

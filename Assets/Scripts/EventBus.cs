@@ -1,9 +1,17 @@
 ﻿using System;
+using Enemies;
+using Managers;
 
+/// <summary>
+/// the base event class all others are derived from
+/// </summary>
 public abstract class Event{
     
 }
 
+/// <summary>
+/// Called when a new wave starts
+/// </summary>
 public class OnStartWave : Event
 {
     public readonly Wave Wave;
@@ -15,6 +23,9 @@ public class OnStartWave : Event
     }
 }
 
+/// <summary>
+/// called when the player takes damage
+/// </summary>
 public class OnPlayerTakeDamage : Event
 {
     public readonly int NewHealth;
@@ -26,21 +37,30 @@ public class OnPlayerTakeDamage : Event
     }
 }
 
-public class OnPlayerReceivedIncome : Event
+/// <summary>
+/// called when the players income is modified.
+/// </summary>
+public class OnPlayerIncomeModified : Event
 {
     public readonly int NewMoney;
 
-    public OnPlayerReceivedIncome(int pNewMoney)
+    public OnPlayerIncomeModified(int pNewMoney)
     {
         NewMoney = pNewMoney;
     }
 }
 
+/// <summary>
+/// called when an enemy has reached the end of its path
+/// </summary>
 public class OnEnemyReachedEnd : Event
 {
     
 }
 
+/// <summary>
+/// called when the player has destroyed an enemy
+/// </summary>
 public class OnEnemyDestroyed : Event
 {
     public readonly EnemyType EnemyType;
@@ -50,6 +70,9 @@ public class OnEnemyDestroyed : Event
     }
 }
 
+/// <summary>
+/// called when a wave ends
+/// </summary>
 public class OnEndWave : Event
 {
     public readonly float BuildTimeLength;
@@ -60,6 +83,9 @@ public class OnEndWave : Event
     }
 }
 
+/// <summary>
+/// called when the last wave has ended.
+/// </summary>
 public class OnGameEnd : Event
 {
     public readonly bool isVictory;
@@ -70,6 +96,9 @@ public class OnGameEnd : Event
     }
 }
 
+/// <summary>
+/// called when the game scene is loaded.
+/// </summary>
 public class OnGameStart : Event
 {
     public readonly float buildPhaseLength;
@@ -80,6 +109,10 @@ public class OnGameStart : Event
     }
 }
 
+/// <summary>
+/// This class is used for receiving and sending events from other parts of the code base
+/// </summary>
+/// <typeparam name="T">The event targeted either in subscribing or publishing</typeparam>
 public class EventBus<T> where T : Event
 {
     public static event Action<T> OnEvent;

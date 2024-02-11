@@ -1,11 +1,16 @@
-using Towers;
-using UnityEngine;
+using Enemies;
 
-public class TowerDirectVFX : TowerVFX
+namespace Towers.VFX
 {
-    public override void Play(Tower source, Enemy target)
+    /// <summary>
+    /// see TowerVFX.cs for info, this is just an implementation.
+    /// </summary>
+    public class TowerDirectVFX : TowerVFX
     {
-        transform.LookAt(target.transform);
-        particleSystem.Play();
+        public override void Play(Tower source, Enemy target)
+        {
+            transform.LookAt(target.transform);
+            particleSystem.Play();
+        }
     }
 }

@@ -1,8 +1,11 @@
 using Towers;
 using UnityEngine;
 
-namespace BuildTools
+namespace Building
 {
+    /// <summary>
+    /// used for destroying previously build towers.
+    /// </summary>
     [CreateAssetMenu(fileName = "Bulldoze", menuName = "SoftwareArchitecture/Tools/Bulldoze")]
     public class Bulldoze : BuildTool
     {
