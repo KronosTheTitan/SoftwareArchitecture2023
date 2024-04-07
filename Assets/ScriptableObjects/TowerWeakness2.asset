@@ -15,8 +15,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  rateOfFire: 1
-  range: 15
+  rateOfFire: 0.5
+  range: 30
   upgrade: {fileID: 0}
   gfx: {fileID: 796575023352922491, guid: 7c838e72ce744fb42ab27c69e1eaa398, type: 3}
   vfx: {fileID: 5579942489692387279, guid: d6d64993ba9092b4799c0a659b74e265, type: 3}

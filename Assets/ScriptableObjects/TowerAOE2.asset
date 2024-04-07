@@ -16,7 +16,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   rateOfFire: 0.5
-  range: 1
+  range: 2
   upgrade: {fileID: 0}
   gfx: {fileID: 796575023352922491, guid: 8e784c04ef8b21f469f89b99bbbbc58a, type: 3}
   vfx: {fileID: 1011986615371294335, guid: 498d94bc1e11adb4ca62678ac125a293, type: 3}

@@ -634,7 +634,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -9292,10 +9292,10 @@ RectTransform:
   - {fileID: 995277039}
   m_Father: {fileID: 1512232413}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 800, y: 428}
-  m_SizeDelta: {x: 156, y: 60}
+  m_AnchoredPosition: {x: -160, y: -112}
+  m_SizeDelta: {x: 256, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &394822444
 PrefabInstance:
@@ -15732,9 +15732,9 @@ RectTransform:
   m_Father: {fileID: 1901558644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -32}
-  m_SizeDelta: {x: 0, y: 64}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 256, y: -32}
+  m_SizeDelta: {x: 512, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679305915
 MonoBehaviour:
@@ -24153,9 +24153,9 @@ RectTransform:
   - {fileID: 1257181256}
   m_Father: {fileID: 390325069}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -128, y: 32}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -128, y: -128}
   m_SizeDelta: {x: 256, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &995277040
@@ -27374,8 +27374,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -394}
-  m_SizeDelta: {x: 1856, y: 128}
+  m_AnchoredPosition: {x: 0, y: 96}
+  m_SizeDelta: {x: 1920, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1125643384
 MonoBehaviour:
@@ -29605,9 +29605,10 @@ MonoBehaviour:
   contents: 'Upgrades a tower.
 
     An Upgraded tower has its rate of fire increased
-    from once per second to twice per second.
+    from once per second to twice per second and has its range doubled.
 
-    Cost = 50'
+    Cost
+    = 50'
 --- !u!1001 &1204149085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38979,10 +38980,10 @@ RectTransform:
   - {fileID: 1901558644}
   m_Father: {fileID: 32967414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1513793661
 PrefabInstance:
@@ -47824,10 +47825,10 @@ RectTransform:
   - {fileID: 1301037471}
   m_Father: {fileID: 1901558644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 32}
-  m_SizeDelta: {x: 0, y: 64}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 256, y: -128}
+  m_SizeDelta: {x: 512, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1841219328
 MonoBehaviour:
@@ -49246,10 +49247,10 @@ RectTransform:
   - {fileID: 1841219327}
   m_Father: {fileID: 1512232413}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -672, y: 428}
-  m_SizeDelta: {x: 412, y: 60}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 288, y: -112}
+  m_SizeDelta: {x: 512, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1901908966
 PrefabInstance:
