@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,12 @@ public class ToolTip : MonoBehaviour
         EventBus<ShowToolTip>.OnEvent += Show;
         EventBus<HideToolTip>.OnEvent += Hide;
         gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        EventBus<ShowToolTip>.OnEvent -= Show;
+        EventBus<HideToolTip>.OnEvent -= Hide;
     }
 
     private void Update()

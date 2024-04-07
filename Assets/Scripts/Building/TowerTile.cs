@@ -20,6 +20,12 @@ namespace Building
             EventBus<OnToolDeselected>.OnEvent += OnToolDeselectedFunction;
         }
 
+        private void OnDisable()
+        {
+            EventBus<OnToolSelected>.OnEvent -= OnToolSelectedFunction;
+            EventBus<OnToolDeselected>.OnEvent -= OnToolDeselectedFunction;
+        }
+
         public void SetTower(Tower newTower)
         {
             tower = newTower;
