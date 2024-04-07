@@ -13,6 +13,11 @@ namespace Building
         {
             return true;
         }
+        
+        public override bool ToolCanBeUsedOnTile(TowerTile tile)
+        {
+            return tile.Tower != null;
+        }
 
         public override bool UseTool(TowerTile target)
         {

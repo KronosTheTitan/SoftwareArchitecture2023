@@ -1,4 +1,5 @@
 ﻿using System;
+using Building;
 using Enemies;
 using Managers;
 
@@ -99,6 +100,7 @@ public class OnGameEnd : Event
 /// <summary>
 /// called when the game scene is loaded.
 /// </summary>
+
 public class OnGameStart : Event
 {
     public readonly float buildPhaseLength;
@@ -107,6 +109,36 @@ public class OnGameStart : Event
     {
         buildPhaseLength = pBuildPhaseLength;
     }
+}
+
+public class OnToolSelected : Event
+{
+    public readonly BuildTool tool;
+
+    public OnToolSelected(BuildTool pTool)
+    {
+        tool = pTool;
+    }
+}
+
+public class OnToolDeselected : Event
+{
+    
+}
+
+public class ShowToolTip : Event
+{
+    public readonly ToolTipTrigger trigger;
+
+    public ShowToolTip(ToolTipTrigger pTrigger)
+    {
+        trigger = pTrigger;
+    }
+}
+
+public class HideToolTip : Event
+{
+    
 }
 
 /// <summary>

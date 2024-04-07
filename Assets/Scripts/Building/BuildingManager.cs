@@ -64,6 +64,7 @@ namespace Building
                 return;
 
             _selectedTool = null;
+            EventBus<OnToolDeselected>.Publish(new OnToolDeselected());
         }
 
         private void DeselectToolSuccess()
@@ -74,6 +75,7 @@ namespace Building
             GameManager.GetInstance().SpendMoney(_selectedTool.Cost);
         
             _selectedTool = null;
+            EventBus<OnToolDeselected>.Publish(new OnToolDeselected());
         }
 
         /// <summary>
@@ -90,6 +92,12 @@ namespace Building
             }
         
             _selectedTool = tools[tool];
+            EventBus<OnToolSelected>.Publish(new OnToolSelected(_selectedTool));
+        }
+
+        public bool GetToolSelectCriteria(int tool)
+        {
+            return tools[tool].CanSelect();
         }
     }
 }

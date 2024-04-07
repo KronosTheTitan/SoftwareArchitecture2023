@@ -10,6 +10,7 @@ namespace Building
         [SerializeField] private int cost;
         public int Cost => cost;
         public abstract bool CanSelect();
+        public abstract bool ToolCanBeUsedOnTile(TowerTile tile);
         public abstract bool UseTool(TowerTile target);
     }
 }
