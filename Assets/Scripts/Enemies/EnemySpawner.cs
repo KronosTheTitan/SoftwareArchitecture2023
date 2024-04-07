@@ -10,7 +10,6 @@ namespace Enemies
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private Path path;
-        public Path Path => path;
     
         [SerializeField] private Wave activeWave;
         [SerializeField] private float lastSpawn;
