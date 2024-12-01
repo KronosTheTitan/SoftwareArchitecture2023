@@ -18,5 +18,5 @@ MonoBehaviour:
   rateOfFire: 0.5
   range: 15
   upgrade: {fileID: 11400000, guid: 439c599784f76fe4dad7fc9154e09efa, type: 2}
-  gfx: {fileID: 0}
+  gfx: {fileID: 796575023352922491, guid: 6a336e2592189c94c91890aeb226ffbb, type: 3}
   vfx: {fileID: 5579942489692387279, guid: d6d64993ba9092b4799c0a659b74e265, type: 3}
