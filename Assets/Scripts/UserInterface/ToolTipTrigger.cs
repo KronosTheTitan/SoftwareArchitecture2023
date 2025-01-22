@@ -21,8 +21,8 @@ public class ToolTipTrigger : MonoBehaviour , IPointerEnterHandler, IPointerExit
     public void OnPointerEnter(PointerEventData eventData)
     {
         exited = false;
-
-        Invoke(nameof(DelayedShow), 0.5f);
+        
+        Invoke(nameof(DelayedShow), 0.0f);
     }
 
     private void DelayedShow()

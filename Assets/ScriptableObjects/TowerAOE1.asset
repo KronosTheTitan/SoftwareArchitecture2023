@@ -17,7 +17,7 @@ MonoBehaviour:
     m_Bits: 8
   rateOfFire: 1
   range: 1
-  upgrade: {fileID: 0}
+  upgrade: {fileID: 11400000, guid: c40104387bd549e4cb4a57607ccbbbd1, type: 2}
   gfx: {fileID: 796575023352922491, guid: 264ae4eccebcdf14683171f1cc99638f, type: 3}
   vfx: {fileID: 1011986615371294335, guid: 498d94bc1e11adb4ca62678ac125a293, type: 3}
   damage: 1

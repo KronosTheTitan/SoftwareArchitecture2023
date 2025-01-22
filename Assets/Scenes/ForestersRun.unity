@@ -6121,7 +6121,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -55331,8 +55331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30354614c4aa1e346b1ebe560631dfd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: 
-  contents: 
+  header: Bulldoze
+  contents: Remove an existing tower.
 --- !u!4 &2118808220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 724444669874065425, guid: b3ccc8998c858b047888f8279f11bba3, type: 3}

@@ -20,7 +20,7 @@ public class ToolTip : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         EventBus<ShowToolTip>.OnEvent -= Show;
         EventBus<HideToolTip>.OnEvent -= Hide;
@@ -44,6 +44,8 @@ public class ToolTip : MonoBehaviour
 
     private void Show(ShowToolTip showToolTip)
     {
+        Debug.Log(showToolTip.trigger.ToString());
+        
         headerField.text = showToolTip.trigger.GetHeader();
         contentField.text = showToolTip.trigger.GetContents();
         gameObject.SetActive(true);
